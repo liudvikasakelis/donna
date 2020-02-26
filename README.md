@@ -72,8 +72,12 @@ it seems that:
   * the target site will block the proxy IP, but never permanently
   * the proxies sometimes just shut down - that's quite permanent unfortunately
     
-I think this qualifies the problem to be treated as a case of the adversarial 
-bandit (I'll add a link). 
+I think this qualifies the problem to be treated as a case of the [adversarial 
+bandit](https://www.chrisstucchio.com/blog/2014/adversarial_bandit_is_not_statistics_problem.html). Multi-armed bandit problems, in my own words, are basically 
+situations where you have multiple options with unknown payoffs, and you're 
+trying to balance *exploration* and *exploitation*. In our case, exploration 
+is checking which proxies are working, which informs our choices in the future.
+Exploitation is then using them to get our queries through. 
 
 *Donna*, therefore, is designed to make use of big lists of possibly 
 non-functional proxies. It rates the proxies depending on their performance 
@@ -96,4 +100,5 @@ almost-functional proxy will get used 33 times more than the hopeless one.
 
 The implementation has been used in semi-production and is thread-safe as well. 
 
-Help is always appreciated! 
+Feedback is always appreciated! 
+
